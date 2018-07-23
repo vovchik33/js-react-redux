@@ -5,20 +5,15 @@ const initialState = {
 }
 
 export default function (state=initialState, action) {
-    console.log("REDUCER"+action.type);
+    console.log("REDUCER Action="+action.type);
     switch (action.type) {
         case Actions.COUNTER_INCREMENT:
-            console.log("Action: " + Actions.COUNTER_INCREMENT);
-            let newState = Object.assign(state, {value:state.value+action.value});
-            console.log("State: " + JSON.stringify(newState));
-            return newState;
+            return Object.assign({}, state, {value:state.value+action.value});
         return 
         case Actions.COUNTER_DECREMENT:
-            console.log("Action: " + Actions.COUNTER_DECREMENT)
-            return Object.assign(state, {value:state.counter>0?state.value+1:0});
+            return Object.assign({}, state, {value:state.value>0?state.value-action.value:0});
         case Actions.COUNTER_RESET:
-            console.log("Action: " + Actions.COUNTER_RESET)
-            return Object.assign(state, {value:0});
+            return Object.assign({}, state, {value:0});
         default:
             return state;
     }
